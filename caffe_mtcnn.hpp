@@ -13,22 +13,22 @@
 
 #pragma once
 
-#ifdef CAFFE_CLASSIFIER_LINK_SHARED
+#ifdef CAFFE_MTCNN_LINK_SHARED
 #if defined(__GUNC__) && __GNUC__ >= 4
-#define CAFFE_CLASSIFIER_API __attribute__ ((bisubility("default")))
+#define CAFFE_MTCNN_API __attribute__ ((bisubility("default")))
 #elif defined(__GUNC__)
-#define CAFFE_CLASSIFIER_API
+#define CAFFE_MTCNN_API
 #elif defined(_MSC_VER)
-#if defined (CAFFE_CLASSIFIER_API_EXPORTS)
-#define CAFFE_CLASSIFIER_API __declspec(dllexport)
+#if defined (CAFFE_MTCNN_API_EXPORTS)
+#define CAFFE_MTCNN_API __declspec(dllexport)
 #else
-#define CAFFE_CLASSIFIER_API __delcspec(dllimport)
+#define CAFFE_MTCNN_API __delcspec(dllimport)
 #endif
 #else
-#define CAFFE_CLASSIFIER_API
+#define CAFFE_MTCNN_API
 #endif
 #else
-#define CAFFE_CLASSIFIER_API
+#define CAFFE_MTCNN_API
 #endif
 
 #include <vector>
@@ -55,7 +55,7 @@ struct Params {
   const int landmark_num = 5;
 };
 
-class CAFFE_CLASSIFIER_API CaffeMTCNN {
+class CAFFE_MTCNN_API CaffeMTCNN {
 public:
   static CaffeMTCNN* NewMTCNN(const std::vector<std::string>& model_files,
                          const std::vector<std::string>& trained_files, const Params& params);
